@@ -5,12 +5,17 @@
     </div>
 
     <aside id="rhs">
-      <button @click="volUp">
+      <button
+        @click="volUp"
+        class="bdr">
         <font-awesome-icon icon="fa-solid fa-volume-high" />
       </button>
-      <progress
-        :value="volFb"
-        max="100"></progress>
+      <div class="barcontainer">
+        <div
+          class="bar"
+          :class="{ muted: isMuted }"></div>
+      </div>
+
       <button @click="volDwn">
         <font-awesome-icon icon="fa-solid fa-volume-low" />
       </button>
@@ -24,7 +29,7 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
+  import { computed, ref } from 'vue'
 
   import VCMain from './VCMain.vue'
 
@@ -32,6 +37,10 @@
       mode: Number,
     }),
     volFb = ref(50),
+    volCSS = computed(() => {
+      // return isMuted.value ? '0' : `${volFb.value}%`
+      return `${volFb.value}%`
+    }),
     isMuted = ref(true),
     volUp = () => {
       volFb.value++
@@ -53,9 +62,10 @@
     display: grid;
     grid-template-areas: ' main rhs';
     @media screen and (max-width: 641px) {
-      grid-template-columns: 1fr 9.5em;
+      grid-template-columns: 1fr 5em;
     }
-    grid-template-columns: 1fr 16.5em;
+
+    grid-template-columns: 1fr 10em;
 
     #rhs {
       text-align: center;
@@ -67,28 +77,9 @@
       border-color: var(--TX-Color);
       padding: 1em;
 
-      progress {
-        border-radius: 7px;
-        width: 100%;
-        height: 10%;
-        box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-        transform: rotate(270deg);
-        margin: auto;
-        @media screen and (max-width: 641px) {
-          width: 5em;
-        }
-      }
-      progress::-webkit-progress-bar {
-        border-radius: 7px;
-      }
-      progress::-webkit-progress-value {
-        background: $PMCC-Grad;
-
-        border-radius: 7px;
-      }
       button {
         height: 5em;
-        width: 10em;
+        width: 5em;
         margin: 0.25em auto;
         border: solid 1px;
         border-color: var(--TX-Color);
@@ -102,5 +93,29 @@
   }
   .mute {
     background: $fail;
+  }
+
+  .barcontainer {
+    height: 50%;
+    width: 3em;
+    margin: 1em auto;
+    display: flex;
+    border: solid 1px;
+    border-color: var(--TX-Color);
+    border-radius: 0.5em;
+  }
+
+  .bar {
+    background: $PMCC-Grad-vert;
+    width: 100%;
+    height: v-bind(volCSS);
+    border-radius: 0.5em;
+    margin-top: auto;
+    // border: solid 1px;
+    // border-color: var(--TX-Color);
+    // border-radius: 0.5em;
+    &.muted {
+      background: $fail;
+    }
   }
 </style>

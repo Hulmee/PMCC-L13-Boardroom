@@ -1,1 +1,19 @@
-@import './assets/base'
+@import './assets/base';
+button{
+    border: solid 1px;
+    border-color: var(--TX-Color);
+    border-radius: 0.2em;
+    margin: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+ &:active{
+    background: $PMCC1;
+ }
+ @media screen and (min-width: 641px) {
+   svg {
+     font-size: 2em;
+   }
+ }
+}

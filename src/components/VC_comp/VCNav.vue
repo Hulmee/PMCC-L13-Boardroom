@@ -1,18 +1,29 @@
 <template>
   <nav class="">
-    <button>
+    <button
+      @click="navClicked(1)"
+      :class="{ active: activeNav === 1 }">
       <h5>Manual Dial</h5>
     </button>
-    <button>
+    <button
+      v-if="false"
+      @click="navClicked(2)"
+      :class="{ active: activeNav === 2 }">
       <h5>Adderess Book</h5>
     </button>
-    <button>
+    <button
+      @click="navClicked(3)"
+      :class="{ active: activeNav === 3 }">
       <h5>Cameras</h5>
     </button>
-    <button>
+    <button
+      @click="navClicked(4)"
+      :class="{ active: activeNav === 4 }">
       <h5>Content Send</h5>
     </button>
-    <button>
+    <button
+      @click="navClicked(5)"
+      :class="{ active: activeNav === 5 }">
       <h5>Advanced Preview</h5>
     </button>
   </nav>
@@ -32,7 +43,7 @@
 
 <script setup>
   import { ref } from 'vue'
-  const activeNav = ref(1),
+  const activeNav = ref(5),
     navClicked = n => {
       activeNav.value = n
     },
@@ -64,7 +75,6 @@
       border-bottom-right-radius: 0.5em;
       border-bottom-left-radius: 0.5em;
     }
-    // }
   }
   h3 {
     padding: 0.5em 0;
@@ -87,6 +97,10 @@
       h5 {
         font-size: 1em;
       }
+    }
+    &.active {
+      background: $PMCC-Grad;
+      color: $light;
     }
   }
   #mic {
