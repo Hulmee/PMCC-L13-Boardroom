@@ -19,12 +19,19 @@
 <script setup>
   import Lights from './Lights.vue'
   import Blinds from './Blinds.vue'
-  import { ref } from 'vue'
-  const hwName = ref('')
-
-  CrComLib.subscribeState('s', 'Csig.Capture_hw_name_fb', s => {
-    hwName.value = s
+  import { computed, ref } from 'vue'
+  // const hwName = ref('')
+  const hwName = computed(() => {
+    let value = 'none'
+    CrComLib.subscribeState('s', 'Csig.Capture_hw_name_fb', s => {
+      value = s ? s : 'none'
+    })
+    return value
   })
+
+  // CrComLib.subscribeState('s', 'Csig.Capture_hw_name_fb', s => {
+  //   hwName.value = s ? s : 'none'
+  // })
 </script>
 
 <style lang="scss" scoped>
