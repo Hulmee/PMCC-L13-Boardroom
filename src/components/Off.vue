@@ -4,8 +4,10 @@
       <Blinds />
     </aside>
     <main @click="$emit('pwrOn')">
-      <h1>Welcome to the {{ hwName }}</h1>
+      <h1>Welcome to the Boardroom</h1>
       <h3>System ready. Touch screen to start.</h3>
+      <small>Device ip: {{ ipAdd }}</small>
+      <small>Device MAC: {{ macAdd }}</small>
       <progress
         value="32767"
         max="65535"></progress>
@@ -20,10 +22,14 @@
   import Lights from './Lights.vue'
   import Blinds from './Blinds.vue'
   import { computed, ref } from 'vue'
-  const hwName = ref('')
+  const ipAdd = ref(''),
+    macAdd = ref('')
 
   CrComLib.subscribeState('s', 'Csig.Ip_Address_fb', s => {
-    hwName.value = s
+    ipAdd.value = s
+  })
+  CrComLib.subscribeState('s', 'Csig.MAC_Address_fb', s => {
+    macAdd.value = s
   })
 </script>
 
