@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
-    "build:archive:prod ": "vite build && ch5-cli archive -p L13-boardroom -d dist -o tsw",
+    "build:archive:prod": "vite build && ch5-cli archive -p L13-boardroom -d dist -o tsw",
+    "archive:prod": " ch5-cli archive -p L13-boardroom -d dist -o tsw",
     "preview": "vite preview"
   },
   "dependencies": {
