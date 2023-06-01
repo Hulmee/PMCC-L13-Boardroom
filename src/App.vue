@@ -12,10 +12,11 @@
           class=""
           src="./assets/Logo/UoM_black.png" />
       </div>
+      <OnHeader />
     </header>
-    <Off v-if="false" />
-    <Mode v-if="false" />
-    <On />
+    <Off v-if="page == 1" />
+    <Mode v-if="page == 2" />
+    <On v-if="page == 3" />
   </div>
 </template>
 
@@ -25,6 +26,9 @@
   import Off from './components/Off.vue'
   import On from './components/On.vue'
   import Mode from './components/Mode.vue'
+  import OnHeader from './components/OnHeader.vue'
+
+  const page = ref(3)
 
   const darkMode = ref(true)
 </script>
@@ -38,10 +42,7 @@
     grid-template-areas:
       'head'
       'sec';
-    @media screen and (max-width: 641px) {
-      grid-template-rows: 5em auto;
-    }
-    grid-template-rows: 10em auto;
+    grid-template-rows: 5em auto;
     &.dark {
       --BG-Color: $dark;
       --TX-Color: $light;
@@ -63,6 +64,7 @@
       align-items: center;
       .logos {
         height: 75%;
+        width: 25%;
         padding-left: 1em;
         img {
           height: 100%;

@@ -27,16 +27,22 @@
       </button>
       <button id="confSec">
         <font-awesome-icon :icon="['fas', 'users']" />
-        <h4>Confrence Secondary</h4>
+        <h3>Confrence Secondary</h3>
       </button>
       <button id="noCon">
-        <h4>No Content</h4>
+        <h3>No Content</h3>
       </button>
     </div>
     <div id="outputs">
-      <button>Left LCD</button>
-      <button>Right LCD</button>
-      <button>Table Monitors</button>
+      <button>
+        <h3>Left LCD</h3>
+      </button>
+      <button>
+        <h3>Right LCD</h3>
+      </button>
+      <button>
+        <h3>Table Monitors</h3>
+      </button>
     </div>
   </section>
 </template>
@@ -51,8 +57,12 @@
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows:  0.5fr repeat(5, 1fr);
+
     grid-template-columns: repeat(4, 1fr);
+    @media screen and (max-width: 641px) {
+      grid-template-rows: 0.5em repeat(4, 1fr) 0.5em;
+    }
     #source {
       grid-row: 2/6;
       grid-column: 1/3;
@@ -67,6 +77,8 @@
       grid-template-rows: repeat(5, 1fr);
       #PMCC {
         grid-area: pmcc;
+        border-top-right-radius: 0.5em;
+        border-top-left-radius: 0.5em;
       }
       #UoM {
         grid-area: UoM;
@@ -76,18 +88,29 @@
       }
       #table2 {
         grid-area: RT;
+        border-bottom-right-radius: 0.5em;
+        border-bottom-left-radius: 0.5em;
       }
       #clichshare {
         grid-area: CS;
       }
       #confPri {
         grid-area: C1;
+        border-top-right-radius: 0.5em;
       }
       #confSec {
         grid-area: C2;
       }
       #noCon {
         grid-area: noCon;
+        border-bottom-right-radius: 0.5em;
+      }
+      @media screen and (max-width: 641px) {
+        button {
+          h3 {
+            font-size: 0.75em;
+          }
+        }
       }
     }
     #outputs {
@@ -105,7 +128,15 @@
           border-bottom-left-radius: 0.5em;
           border-bottom-right-radius: 0.5em;
         }
+        @media screen and (max-width: 641px) {
+          h3 {
+            font-size: 0.75em;
+          }
+        }
       }
     }
+  }
+  button {
+    text-align: center;
   }
 </style>
