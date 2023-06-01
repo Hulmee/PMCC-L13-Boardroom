@@ -28,7 +28,7 @@
   import Mode from './components/Mode.vue'
   import OnHeader from './components/OnHeader.vue'
 
-  const page = ref(3)
+  const page = ref(1)
 
   const darkMode = ref(true)
 </script>

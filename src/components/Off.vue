@@ -4,7 +4,7 @@
       <Blinds />
     </aside>
     <main @click="$emit('pwrOn')">
-      <h1>Welcome to the Boardroom</h1>
+      <h1>Welcome to the {{ hwName }}</h1>
       <h3>System ready. Touch screen to start.</h3>
       <progress
         value="32767"
@@ -19,6 +19,12 @@
 <script setup>
   import Lights from './Lights.vue'
   import Blinds from './Blinds.vue'
+  import { ref } from 'vue'
+  const hwName = ref('')
+
+  CrComLib.subscribeState('s', 'Csig.Capture_hw_name_fb', s => {
+    hwName.value = s
+  })
 </script>
 
 <style lang="scss" scoped>
