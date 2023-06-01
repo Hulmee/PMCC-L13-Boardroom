@@ -18,3 +18,29 @@ button{
    }
  }
 }
+.modal{
+    height: calc(100vh - 5em);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $dark;
+    position: absolute;
+    left: 0;
+    top: 5em;
+    z-index: 1;
+}
+#main{
+  &.dark {
+    --BG-Color: $dark;
+    --TX-Color: $light;
+    background: $dark;
+    color: $light;
+  }
+  &.light {
+    --BG-Color: $light;
+    --TX-Color: $dark;
+    background: $light;
+    color: $dark;
+  }
+}

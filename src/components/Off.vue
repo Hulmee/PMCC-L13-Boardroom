@@ -5,12 +5,33 @@
     </aside>
     <main @click="$emit('pwrOn')">
       <h1>Welcome to the Boardroom</h1>
-      <h3>System ready. Touch screen to start.</h3>
+      <h3>What would you like to do today.</h3>
       <small>Device ip: {{ ipAdd }}</small>
       <small>Device MAC: {{ macAdd }}</small>
-      <progress
-        value="32767"
-        max="65535"></progress>
+
+      <CoffeLoad
+        id="coffee"
+        v-if="loading" />
+
+      <div
+        class="btns"
+        v-if="!loading">
+        <button>
+          <font-awesome-icon
+            icon="fa-solid fa-display"
+            size="xl" />
+          <h4 class="container">In room Presentation</h4>
+        </button>
+        <button>
+          <font-awesome-icon
+            icon="fa-solid fa-users"
+            size="xl" />
+          <h4 class="container">
+            a meeting with <br />
+            Zoom / Teams
+          </h4>
+        </button>
+      </div>
     </main>
     <aside id="rhs">
       <Lights />
@@ -21,9 +42,11 @@
 <script setup>
   import Lights from './Lights.vue'
   import Blinds from './Blinds.vue'
+  import CoffeLoad from './Reuse/CoffeLoad.vue'
   import { computed, ref } from 'vue'
   const ipAdd = ref(''),
-    macAdd = ref('')
+    macAdd = ref(''),
+    loading = ref(true)
 
   CrComLib.subscribeState('s', 'Csig.Ip_Address_fb', s => {
     ipAdd.value = s
@@ -35,7 +58,9 @@
 
 <style lang="scss" scoped>
   @import '../assets/colors';
-
+  #coffee {
+    margin-top: 10em;
+  }
   section {
     grid-area: sec;
     height: 100%;
@@ -75,17 +100,57 @@
     }
   }
 
-  progress {
-    border-radius: 7px;
-    width: 75%;
-    height: 1.5em;
-    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-  }
-  progress::-webkit-progress-bar {
-    border-radius: 7px;
-  }
-  progress::-webkit-progress-value {
-    background: $PMCC-Grad;
-    border-radius: 7px;
+  .btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 75%;
+    button {
+      min-height: 25%;
+      max-height: 100px;
+      // min-width: 200px;
+      width: 200px;
+
+      justify-content: center;
+      align-items: center;
+      display: grid;
+      grid-template-areas:
+        'icon'
+        'lab';
+      grid-template-rows: 1fr 1fr;
+      border: solid 1px;
+      border-color: var(--TX-Color);
+      border-radius: 0.2em;
+      padding: 0.5em;
+      margin: 0.5rem 1px;
+      @media screen and (min-width: 641px) {
+        padding: 1em 0.75em;
+        svg {
+          font-size: 2em;
+        }
+      }
+      &:first-child {
+        border-top-left-radius: 0.5em;
+        border-bottom-left-radius: 0.5em;
+      }
+      &:last-child {
+        border-top-right-radius: 0.5em;
+        border-bottom-right-radius: 0.5em;
+      }
+      &:active {
+        background: $PMCC-Grad;
+        color: $light;
+      }
+      h4 {
+        margin: 1em 0;
+        grid-area: lab;
+        min-height: 50px;
+      }
+      svg {
+        margin-top: 0.5em;
+        grid: icon;
+        width: 100%;
+      }
+    }
   }
 </style>

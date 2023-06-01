@@ -1,5 +1,8 @@
 <template>
-  <main class="">
+  <!-- <teleport to="body"> -->
+  <main
+    id="Mode"
+    class="modal">
     <h1>What would you like to do today</h1>
 
     <div class="btns">
@@ -20,14 +23,14 @@
       </button>
     </div>
   </main>
+  <!-- </teleport> -->
 </template>
 
 <script setup></script>
 
 <style lang="scss" scoped>
   @import '../assets/colors';
-  main {
-    // z-index: 1;
+  #Mode {
     display: flex;
     flex-direction: column;
     text-align: center;

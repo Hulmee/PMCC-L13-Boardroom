@@ -14,10 +14,12 @@
       </div>
       <OnHeader />
     </header>
+
     <Off v-if="page == 1" />
-    <Mode v-if="page == 2" />
     <On v-if="page == 3" />
+    <!-- <Mode v-if="false" /> -->
   </div>
+  <div class="popups"></div>
 </template>
 
 <script setup>
@@ -25,7 +27,7 @@
 
   import Off from './components/Off.vue'
   import On from './components/On.vue'
-  import Mode from './components/Mode.vue'
+  // import Mode from './components/Mode.vue'
   import OnHeader from './components/OnHeader.vue'
 
   const page = ref(1)
@@ -43,18 +45,18 @@
       'head'
       'sec';
     grid-template-rows: 5em auto;
-    &.dark {
-      --BG-Color: $dark;
-      --TX-Color: $light;
-      background: $dark;
-      color: $light;
-    }
-    &.light {
-      --BG-Color: $light;
-      --TX-Color: $dark;
-      background: $light;
-      color: $dark;
-    }
+    // &.dark {
+    //   --BG-Color: $dark;
+    //   --TX-Color: $light;
+    //   background: $dark;
+    //   color: $light;
+    // }
+    // &.light {
+    //   --BG-Color: $light;
+    //   --TX-Color: $dark;
+    //   background: $light;
+    //   color: $dark;
+    // }
     header {
       height: 100%;
       grid-area: head;
