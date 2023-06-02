@@ -47,7 +47,8 @@
       button {
         height: 100%;
         width: 100%;
-
+        border: solid 1px var(--BG-Color);
+        color: var(--BG-Color);
         &:first-child {
           border-top-left-radius: 0.5em;
           border-bottom-left-radius: 0.5em;
@@ -65,6 +66,7 @@
       width: 25%;
       padding: 0.25em 0.5em;
       color: $fail;
+      border: solid 1px $fail;
       margin-left: auto;
       margin-right: 1em;
       border-radius: 0.5em;

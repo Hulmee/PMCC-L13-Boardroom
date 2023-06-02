@@ -63,10 +63,6 @@
           font-size: 1em;
         }
       }
-      &.active {
-        background: $PMCC-Grad;
-        color: $light;
-      }
       &:first-child {
         border-top-right-radius: 0.5em;
         border-top-left-radius: 0.5em;

@@ -5,7 +5,7 @@
       <font-awesome-icon icon="fa-solid fa-caret-up" />
       <h5>Raise Blinds</h5>
     </button>
-    <button class="active">
+    <button>
       <font-awesome-icon icon="fa-regular fa-square" />
       <h5>Stop Blinds</h5>
     </button>

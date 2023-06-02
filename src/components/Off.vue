@@ -40,20 +40,25 @@
 </template>
 
 <script setup>
+  import { ref } from 'vue'
+
   import Lights from './Lights.vue'
   import Blinds from './Blinds.vue'
   import CoffeLoad from './Reuse/CoffeLoad.vue'
-  import { computed, ref } from 'vue'
+
+  import { useCrestronFB } from '../use/useCrestronFB'
+
   const ipAdd = ref(''),
-    macAdd = ref(''),
+    // macAdd = ref(''),
+    { stringFB: macAdd } = useCrestronFB('Csig.MAC_Address_fb'),
     loading = ref(true)
 
   CrComLib.subscribeState('s', 'Csig.Ip_Address_fb', s => {
     ipAdd.value = s
   })
-  CrComLib.subscribeState('s', 'Csig.MAC_Address_fb', s => {
-    macAdd.value = s
-  })
+  // CrComLib.subscribeState('s', 'Csig.MAC_Address_fb', s => {
+  //   macAdd.value = s
+  // })
 </script>
 
 <style lang="scss" scoped>

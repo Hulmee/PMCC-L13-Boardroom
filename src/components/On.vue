@@ -1,13 +1,18 @@
 <template>
   <section id="wrapper">
     <div id="mode">
-      <VCMain />
+      <VCMain v-if="false" />
+      <PresAV
+        class="marg-LR"
+        v-if="false" />
+      <Room v-if="false" />
+      <Microphone />
     </div>
 
     <aside id="rhs">
       <button
         @click="volUp"
-        class="bdr">
+        class="">
         <font-awesome-icon icon="fa-solid fa-volume-high" />
       </button>
       <div class="barcontainer">
@@ -32,6 +37,9 @@
   import { computed, ref } from 'vue'
 
   import VCMain from './VCMain.vue'
+  import PresAV from './Present/PresAV.vue'
+  import Room from './Room.vue'
+  import Microphone from './Microphone.vue'
 
   const props = defineProps({
       mode: Number,
@@ -80,8 +88,6 @@
         height: 5em;
         width: 5em;
         margin: 0.25em auto;
-        border: solid 1px;
-        border-color: var(--TX-Color);
         border-radius: 0.5em;
         @media screen and (max-width: 641px) {
           height: 2.5em;
@@ -102,19 +108,17 @@
     border: solid 1px;
     border-color: var(--TX-Color);
     border-radius: 0.5em;
-  }
 
-  .bar {
-    background: $PMCC-Grad-vert;
-    width: 100%;
-    height: v-bind(volCSS);
-    border-radius: 0.5em;
-    margin-top: auto;
-    // border: solid 1px;
-    // border-color: var(--TX-Color);
-    // border-radius: 0.5em;
-    &.muted {
-      background: $fail;
+    .bar {
+      background: $PMCC-Grad-vert;
+      width: 100%;
+      height: v-bind(volCSS);
+      border-radius: 0.5em;
+      margin-top: auto;
+
+      &.muted {
+        background: $fail;
+      }
     }
   }
 </style>

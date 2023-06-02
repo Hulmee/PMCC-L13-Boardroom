@@ -16,7 +16,8 @@
   */
 
   $size: 140px;
-  $color: #fff;
+  $color: var(--TX-Color);
+  // $color: #fff;
   $no-of-fume: 3;
 
   @keyframes coffee {
@@ -55,7 +56,7 @@
     div {
       height: ($size / 2);
       width: ($size / 5);
-      background: #fff;
+      background: $color;
       opacity: 0.3;
       animation: coffee 2s infinite;
     }

@@ -1,4 +1,5 @@
 @import './assets/base';
+
 button{
     border: solid 1px;
     border-color: var(--TX-Color);
@@ -12,35 +13,59 @@ button{
     background: $PMCC1;
     color: $light;
  }
+ &.active {
+  background: $PMCC-Grad;
+  color: $light;
+}
  @media screen and (min-width: 641px) {
    svg {
      font-size: 2em;
    }
  }
 }
-.modal{
-    height: calc(100vh - 5em);
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: $dark;
-    position: absolute;
-    left: 0;
-    top: 5em;
-    z-index: 1;
-}
+
 #main{
   &.dark {
-    --BG-Color: $dark;
-    --TX-Color: $light;
-    background: $dark;
+    --BG-Color: #3c4040;
+    --TX-Color: #efe6dd;
+    background-color: $dark;
     color: $light;
+    transition: background-color 500ms ease-in-out, color 500ms;
   }
   &.light {
-    --BG-Color: $light;
-    --TX-Color: $dark;
-    background: $light;
+    --BG-Color: #efe6dd;
+    --TX-Color: #3c4040;
+    background-color: $light;
     color: $dark;
+    transition: background-color 500ms ease-in-out, color 500ms;
+    
   }
+}
+.modal{
+  // height: calc(100vh - 5em);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $dark-trans;
+  // opacity: 0.9;
+  color: $light;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+.modal-card{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  height: 75%;
+  width: 75%;
+  background: $dark;
+  border-radius: 1em;
+  border: solid 1px $light ;
+  filter: drop-shadow(10px 10px 10px $dark);
+  text-align: center;
+}
 }
