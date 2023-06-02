@@ -17,26 +17,36 @@
       <OnHeader />
     </header>
 
-    <Off v-if="page == 1" />
-    <On v-if="page == 3" />
+    <Off v-if="offFB" />
+    <On v-if="onFB" />
   </div>
   <div class="popups">
-    <Timeout v-if="false" />
+    <Timeout v-if="timeoutFB" />
   </div>
 </template>
 
 <script setup>
+  // vue imports
   import { ref } from 'vue'
 
+  // import componets/pages
   import Off from './components/Off.vue'
   import On from './components/On.vue'
-  // import Mode from './components/Mode.vue'
   import OnHeader from './components/OnHeader.vue'
   import Timeout from './components/Modal/Timeout.vue'
 
+  // import Crestron functions
+  import { useCrestronFB } from './use/useCrestronFB'
+  import { useCrestronAct } from './use/useCrestronAct'
+
+  // register Crestron feedback
+  const { digFB: offFB } = useCrestronFB('15'),
+    { digFB: onFB } = useCrestronFB('16'),
+    { digFB: timeoutFB } = useCrestronFB('18')
+
   const page = ref(1)
 
-  const darkMode = ref(false)
+  const darkMode = ref(true)
 </script>
 
 <style lang="scss" scoped>

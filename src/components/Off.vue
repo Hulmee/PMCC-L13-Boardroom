@@ -5,7 +5,7 @@
     </aside>
     <main @click="$emit('pwrOn')">
       <h1>Welcome to the Boardroom</h1>
-      <h3>What would you like to do today.</h3>
+      <h3>{{ subHeading }}</h3>
       <small>Device ip: {{ ipAdd }}</small>
       <small>Device MAC: {{ macAdd }}</small>
 
@@ -48,17 +48,10 @@
 
   import { useCrestronFB } from '../use/useCrestronFB'
 
-  const ipAdd = ref(''),
-    // macAdd = ref(''),
-    { stringFB: macAdd } = useCrestronFB('Csig.MAC_Address_fb'),
-    loading = ref(true)
-
-  CrComLib.subscribeState('s', 'Csig.Ip_Address_fb', s => {
-    ipAdd.value = s
-  })
-  // CrComLib.subscribeState('s', 'Csig.MAC_Address_fb', s => {
-  //   macAdd.value = s
-  // })
+  const { stringFB: macAdd } = useCrestronFB('Csig.MAC_Address_fb'),
+    { stringFB: ipAdd } = useCrestronFB('Csig.Ip_Address_fb'),
+    { stringFB: subHeading } = useCrestronFB('1'),
+    { digFB: loading } = useCrestronFB('13')
 </script>
 
 <style lang="scss" scoped>
