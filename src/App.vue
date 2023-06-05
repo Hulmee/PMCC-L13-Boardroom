@@ -23,6 +23,7 @@
   <div class="popups">
     <Timeout v-if="timeoutFB" />
     <Shutdown v-if="shutdownFB" />
+    <Keyboard v-if="KeyboardFB" />
   </div>
 </template>
 
@@ -36,6 +37,7 @@
   import OnHeader from './components/OnHeader.vue'
   import Timeout from './components/Modal/Timeout.vue'
   import Shutdown from './components/Modal/Shutdown.vue'
+  import Keyboard from './components/Modal/Keyboard.vue'
 
   // import Crestron functions
   import { useCrestronFB } from './use/useCrestronFB'
@@ -45,7 +47,8 @@
   const { digFB: offFB } = useCrestronFB('15'),
     { digFB: onFB } = useCrestronFB('16'),
     { digFB: timeoutFB } = useCrestronFB('18'),
-    { digFB: shutdownFB } = useCrestronFB('17')
+    { digFB: shutdownFB } = useCrestronFB('17'),
+    { digFB: KeyboardFB } = useCrestronFB('141')
 
   const darkMode = ref(true)
 </script>
