@@ -1,96 +1,98 @@
 <template>
-  <teleport to="body">
-    <div class="modal">
-      <div class="modal-card contsiner">
-        <div class="line line1">
-          <button>
-            <font-awesome-icon :icon="['fas', 'square-xmark']" />
-            <!-- <h3>close</h3> -->
-          </button>
-        </div>
-        <div class="line line2">
-          <button class="">`</button>
-          <button class="">1</button>
-          <button class="">2</button>
-          <button class="">3</button>
-          <button class="">4</button>
-          <button class="">5</button>
-          <button class="">6</button>
-          <button class="">7</button>
-          <button class="">8</button>
-          <button class="">9</button>
-          <button class="">0</button>
-          <button class="">-</button>
-          <button class="">=</button>
-          <button class="">Backspace</button>
-        </div>
-        <div class="line line3">
-          <button id="tab">TAB</button>
-          <button>q</button>
-          <button>w</button>
-          <button>e</button>
-          <button>r</button>
-          <button>t</button>
-          <button>y</button>
-          <button>u</button>
-          <button>i</button>
-          <button>o</button>
-          <button>p</button>
-          <button>[</button>
-          <button>]</button>
-          <button>\</button>
-        </div>
-        <div class="line line4">
-          <button>CapsLock</button>
-          <button>a</button>
-          <button>s</button>
-          <button>d</button>
-          <button>f</button>
-          <button>g</button>
-          <button>h</button>
-          <button>j</button>
-          <button>k</button>
-          <button>l</button>
-          <button>;</button>
-          <button>@</button>
-          <button>#</button>
-        </div>
-        <div class="line line5">
-          <button>Shift</button>
-          <button>z</button>
-          <button>x</button>
-          <button>c</button>
-          <button>v</button>
-          <button>b</button>
-          <button>n</button>
-          <button>m</button>
-          <button>,</button>
-          <button>.</button>
-          <button>/</button>
-          <button>Shift</button>
-        </div>
-        <div class="line line6">
-          <button></button>
-        </div>
+  <div class="modal">
+    <div class="modal-card contsiner">
+      <div class="line line1">
+        <button @click="dPulse('142')">
+          <font-awesome-icon :icon="['fas', 'square-xmark']" />
+        </button>
+      </div>
+      <div class="line line2">
+        <button @click="dPulse('149')">`</button>
+        <button @click="dPulse('150')">1</button>
+        <button @click="dPulse('151')">2</button>
+        <button @click="dPulse('152')">3</button>
+        <button @click="dPulse('153')">4</button>
+        <button @click="dPulse('154')">5</button>
+        <button @click="dPulse('155')">6</button>
+        <button @click="dPulse('156')">7</button>
+        <button @click="dPulse('157')">8</button>
+        <button @click="dPulse('158')">9</button>
+        <button @click="dPulse('159')">0</button>
+        <button @click="dPulse('160')">-</button>
+        <button @click="dPulse('161')">=</button>
+        <button @click="dPulse('162')">Backspace</button>
+      </div>
+      <div class="line line3">
+        <button id="tab">TAB</button>
+        <button @click="dPulse('163')">q</button>
+        <button @click="dPulse('164')">w</button>
+        <button @click="dPulse('165')">e</button>
+        <button @click="dPulse('166')">r</button>
+        <button @click="dPulse('167')">t</button>
+        <button @click="dPulse('168')">y</button>
+        <button @click="dPulse('169')">u</button>
+        <button @click="dPulse('170')">i</button>
+        <button @click="dPulse('171')">o</button>
+        <button @click="dPulse('172')">p</button>
+        <button @click="dPulse('173')">[</button>
+        <button @click="dPulse('174')">]</button>
+        <button @click="dPulse('175')">\</button>
+      </div>
+      <div class="line line4">
+        <button @click="dPulse('148')">CapsLock</button>
+        <button @click="dPulse('176')">a</button>
+        <button @click="dPulse('177')">s</button>
+        <button @click="dPulse('178')">d</button>
+        <button @click="dPulse('179')">f</button>
+        <button @click="dPulse('180')">g</button>
+        <button @click="dPulse('181')">h</button>
+        <button @click="dPulse('182')">j</button>
+        <button @click="dPulse('183')">k</button>
+        <button @click="dPulse('184')">l</button>
+        <button @click="dPulse('185')">;</button>
+        <button @click="dPulse('198')">@</button>
+        <button @click="dPulse('199')">#</button>
+      </div>
+      <div class="line line5">
+        <button @click="dPulse('147')">Shift</button>
+        <button @click="dPulse('187')">z</button>
+        <button @click="dPulse('188')">x</button>
+        <button @click="dPulse('189')">c</button>
+        <button @click="dPulse('190')">v</button>
+        <button @click="dPulse('191')">b</button>
+        <button @click="dPulse('192')">n</button>
+        <button @click="dPulse('193')">m</button>
+        <button @click="dPulse('194')">,</button>
+        <button @click="dPulse('195')">.</button>
+        <button @click="dPulse('196')">/</button>
+        <button @click="dPulse('147')">Shift</button>
+      </div>
+      <div class="line line6">
+        <button @click="dPulse('197')"></button>
       </div>
     </div>
-  </teleport>
+  </div>
 </template>
 
 <script setup>
-  //
+  // import and use Crestron functions
+  // import { useCrestronFB } from '../../use/useCrestronFB'
+  import { useCrestronAct } from '../../use/useCrestronAct'
+  const { dPulse } = useCrestronAct()
 </script>
 
 <style lang="scss" scoped>
   @import '../../assets/colors';
   .modal {
     background: none;
+    top: 45vh;
+    height: 55vh;
     .modal-card {
       margin-top: auto;
       margin-bottom: 2em;
       padding: 0.5em;
       height: 50vh;
-      filter: drop-shadow(10px 10px 10px $light);
+      // filter: drop-shadow(10px 10px 10px $light);
       .line {
         display: flex;
         justify-content: space-around;
@@ -112,11 +114,13 @@
           svg {
             height: 100%;
           }
+          &:active {
+            background: none;
+          }
         }
       }
       .line2 {
         :last-child {
-          // color: $fail;
           aspect-ratio: 3/1;
         }
       }
@@ -131,7 +135,6 @@
       }
       .line4 {
         :first-child {
-          // color: $fail;
           aspect-ratio: 1.75/1;
         }
       }
@@ -146,6 +149,16 @@
           aspect-ratio: 9/1;
         }
       }
+    }
+  }
+
+  .modal {
+    z-index: 1;
+
+    .modal-card {
+      background: var(--BG-Color);
+      color: var(--TX-Color);
+      filter: drop-shadow(10px 10px 10px var(--TX-Color));
     }
   }
 </style>

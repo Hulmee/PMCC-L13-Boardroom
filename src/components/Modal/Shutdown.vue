@@ -1,38 +1,37 @@
 <template>
-  <teleport to="body">
-    <div
-      @click.stop="dPulse('29')"
-      class="modal">
-      <div class="modal-card container">
-        <h1>System Timeout</h1>
-        <p>Are you sure you wish to shut the system down?</p>
+  <!-- <teleport to="body"> -->
+  <div
+    @click.self="dPulse('29')"
+    class="modal">
+    <div class="modal-card container">
+      <h1>System Shutdown</h1>
+      <p>Are you sure you wish to shut the system down?</p>
 
-        <!-- <small>Time Remaining: <span>XXX</span> Seconds</small> -->
+      <!-- <small>Time Remaining: <span>XXX</span> Seconds</small> -->
 
-        <div class="btns">
-          <button
-            @click="dPulse('28')"
-            id="yesTO">
-            <font-awesome-icon :icon="['fas', 'square-check']" />
-            <h3>YES</h3>
-          </button>
-          <button
-            @click="dPulse('29')"
-            id="noTO">
-            <font-awesome-icon :icon="['fas', 'square-xmark']" />
-            <h3>NO</h3>
-          </button>
-        </div>
+      <div class="btns">
+        <button
+          @click="dPulse('28')"
+          id="yesTO">
+          <font-awesome-icon :icon="['fas', 'square-check']" />
+          <h3>YES</h3>
+        </button>
+        <button
+          @click="dPulse('29')"
+          id="noTO">
+          <font-awesome-icon :icon="['fas', 'square-xmark']" />
+          <h3>NO</h3>
+        </button>
       </div>
     </div>
-  </teleport>
+  </div>
+  <!-- </teleport> -->
 </template>
 
 <script setup>
-  // import Crestron functions
-  import { useCrestronFB } from '../../use/useCrestronFB'
+  // import and use Crestron functions
+  // import { useCrestronFB } from '../../use/useCrestronFB'
   import { useCrestronAct } from '../../use/useCrestronAct'
-
   const { dPulse } = useCrestronAct()
 </script>
 

@@ -1,33 +1,43 @@
 <template>
-  <teleport to="body">
-    <div class="modal">
-      <div class="modal-card container">
-        <h1>System Timeout</h1>
-        <pre>
+  <!-- <teleport to="body"> -->
+  <div
+    @click.self="dPulse('19')"
+    class="modal">
+    <div class="modal-card container">
+      <h1>System Timeout</h1>
+      <pre>
           The System is about to shutdown due to inactivity. 
           
           Press NO to Cancel the shutdow & YES to shutdown now.
-        </pre>
+        </pre
+      >
 
-        <small>Time Remaining: <span>XXX</span> Seconds</small>
+      <small>Time Remaining: <span>XXX</span> Seconds</small>
 
-        <div class="btns">
-          <button id="yesTO">
-            <font-awesome-icon :icon="['fas', 'square-check']" />
-            <h3>YES</h3>
-          </button>
-          <button id="noTO">
-            <font-awesome-icon :icon="['fas', 'square-xmark']" />
-            <h3>NO</h3>
-          </button>
-        </div>
+      <div class="btns">
+        <button
+          @click="dPulse('28')"
+          id="yesTO">
+          <font-awesome-icon :icon="['fas', 'square-check']" />
+          <h3>YES</h3>
+        </button>
+        <button
+          @click="dPulse('19')"
+          id="noTO">
+          <font-awesome-icon :icon="['fas', 'square-xmark']" />
+          <h3>NO</h3>
+        </button>
       </div>
     </div>
-  </teleport>
+  </div>
+  <!-- </teleport> -->
 </template>
 
 <script setup>
-  //
+  // import and use Crestron functions
+  // import { useCrestronFB } from '../../use/useCrestronFB'
+  import { useCrestronAct } from '../../use/useCrestronAct'
+  const { dPulse } = useCrestronAct()
 </script>
 
 <style lang="scss" scoped>

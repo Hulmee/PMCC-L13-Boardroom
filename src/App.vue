@@ -8,8 +8,12 @@
         @click="darkMode = !darkMode"
         class="logos">
         <img
+          v-if="darkMode"
           class=""
           src="./assets/Logo/Logo.png" />
+        <img
+          v-else
+          src="./assets/Logo/logo_dark.png" />
         <img
           class=""
           src="./assets/Logo/UoM_black.png" />
@@ -19,12 +23,12 @@
 
     <Off v-if="offFB" />
     <On v-if="onFB" />
-  </div>
-  <div class="popups">
-    <Timeout v-if="timeoutFB" />
     <Shutdown v-if="shutdownFB" />
+    <Timeout v-if="timeoutFB" />
     <Keyboard v-if="KeyboardFB" />
   </div>
+  <!-- <div class="popups">
+  </div> -->
 </template>
 
 <script setup>
