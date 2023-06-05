@@ -3,7 +3,7 @@
   <div
     @click.self="dPulse('19')"
     class="modal">
-    <div class="modal-card container">
+    <div class="modal-card">
       <h1>System Timeout</h1>
       <pre>
           The System is about to shutdown due to inactivity. 

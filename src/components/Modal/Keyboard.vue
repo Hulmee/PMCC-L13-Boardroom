@@ -1,6 +1,6 @@
 <template>
   <div class="modal">
-    <div class="modal-card contsiner">
+    <div class="modal-card">
       <div class="line line1">
         <button @click="dPulse('142')">
           <font-awesome-icon :icon="['fas', 'square-xmark']" />

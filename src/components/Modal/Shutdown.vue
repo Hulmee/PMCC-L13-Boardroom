@@ -3,7 +3,7 @@
   <div
     @click.self="dPulse('29')"
     class="modal">
-    <div class="modal-card container">
+    <div class="modal-card">
       <h1>System Shutdown</h1>
       <p>Are you sure you wish to shut the system down?</p>
 

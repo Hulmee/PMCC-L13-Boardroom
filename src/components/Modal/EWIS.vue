@@ -1,8 +1,11 @@
 <template>
   <div class="modal">
-    <div class="modal-car container">
-      <h3>EMERGENCY SYSTEM ACTIVATED</h3>
-      <h1>FOLLOW INSTRUCTIONS FOR EVACUATION</h1>
+    <div class="modal-card">
+      <h2>EMERGENCY SYSTEM ACTIVATED</h2>
+      <h1>
+        FOLLOW INSTRUCTIONS <br />
+        FOR EVACUATION
+      </h1>
     </div>
   </div>
 </template>
@@ -15,5 +18,12 @@
   @import '../../assets/colors';
   .modal {
     background: $fail;
+    z-index: 10;
+  }
+  h1 {
+    font-size: 4em;
+  }
+  h2 {
+    font-size: 2em;
   }
 </style>

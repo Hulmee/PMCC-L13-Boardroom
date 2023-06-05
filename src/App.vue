@@ -26,6 +26,7 @@
     <Shutdown v-if="shutdownFB" />
     <Timeout v-if="timeoutFB" />
     <Keyboard v-if="KeyboardFB" />
+    <EWIS v-if="ewisFB" />
   </div>
   <!-- <div class="popups">
   </div> -->
@@ -42,6 +43,7 @@
   import Timeout from './components/Modal/Timeout.vue'
   import Shutdown from './components/Modal/Shutdown.vue'
   import Keyboard from './components/Modal/Keyboard.vue'
+  import EWIS from './components/Modal/EWIS.vue'
 
   // import Crestron functions
   import { useCrestronFB } from './use/useCrestronFB'
@@ -52,7 +54,8 @@
     { digFB: onFB } = useCrestronFB('16'),
     { digFB: timeoutFB } = useCrestronFB('18'),
     { digFB: shutdownFB } = useCrestronFB('17'),
-    { digFB: KeyboardFB } = useCrestronFB('141')
+    { digFB: KeyboardFB } = useCrestronFB('141'),
+    { digFB: ewisFB } = useCrestronFB('20')
 
   const darkMode = ref(true)
 </script>
