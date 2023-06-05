@@ -2,26 +2,26 @@
   <h3>Lights</h3>
   <div class="btns">
     <button
-      @click="lightClicked(4)"
-      :class="{ active: activeLight === 4 }">
+      @click="dPulse('64')"
+      :class="{ active: highFB }">
       <font-awesome-icon icon="fa-solid fa-lightbulb" />
       <h5>High</h5>
     </button>
     <button
-      @click="lightClicked(3)"
-      :class="{ active: activeLight === 3 }">
+      @click="dPulse('65')"
+      :class="{ active: lowFB }">
       <font-awesome-icon icon="fa-solid fa-lightbulb" />
       <h5>Low</h5>
     </button>
     <button
-      @click="lightClicked(2)"
-      :class="{ active: activeLight === 2 }">
+      @click="dPulse('66')"
+      :class="{ active: preFB }">
       <font-awesome-icon icon="fa-solid fa-lightbulb" />
       <h5>Present</h5>
     </button>
     <button
-      @click="lightClicked(1)"
-      :class="{ active: activeLight === 1 }">
+      @click="dPulse('67')"
+      :class="{ active: offFB }">
       <font-awesome-icon icon="fa-regular fa-lightbulb" />
       <h5>Off</h5>
     </button>
@@ -29,15 +29,20 @@
 </template>
 
 <script setup>
-  import { ref } from 'vue'
-  const activeLight = ref(1),
-    lightClicked = n => {
-      activeLight.value = n
-    }
+  // import Crestron Logic
+  import { useCrestronAct } from '../../use/useCrestronAct'
+  import { useCrestronFB } from '../../use/useCrestronFB'
+
+  // use Crestron logic
+  const { dPulse } = useCrestronAct(),
+    { digFB: highFB } = useCrestronFB('64'),
+    { digFB: lowFB } = useCrestronFB('65'),
+    { digFB: preFB } = useCrestronFB('66'),
+    { digFB: offFB } = useCrestronFB('67')
 </script>
 
 <style lang="scss" scoped>
-  @import '../assets/colors';
+  @import '../../assets/colors';
 
   .btns {
     height: 85%;

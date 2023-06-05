@@ -45,7 +45,6 @@
       button {
         min-height: 25%;
         max-height: 100px;
-        // min-width: 200px;
         width: 200px;
 
         justify-content: center;

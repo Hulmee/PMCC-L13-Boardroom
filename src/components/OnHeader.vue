@@ -3,31 +3,51 @@
     id="onHead"
     class="">
     <nav class="">
-      <button v-if="false">
+      <button
+        @click="dPulse('27')"
+        v-if="persFB">
         <font-awesome-icon :icon="['fas', 'users']" />
         <h3>Conference</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('23')"
+        v-else>
         <font-awesome-icon :icon="['fas', 'person-chalkboard']" />
         <h3>Presentation</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('26')"
+        :class="{ active: micsFB }">
         <font-awesome-icon :icon="['fas', 'microphone']" />
         <h3>Microphones</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('24')"
+        :class="{ active: roomFB }">
         <font-awesome-icon
           :icon="['fas', 'sliders']"
           rotation="90" />
         <h3>Room</h3>
       </button>
     </nav>
-    <button id="pwr">
+    <button
+      @click="dPulse('22')"
+      id="pwr">
       <font-awesome-icon :icon="['fas', 'power-off']" />
       <h3>power</h3>
     </button>
   </section>
 </template>
+<script setup>
+  // import and use Crestron functions
+  import { useCrestronAct } from '../use/useCrestronAct'
+  import { useCrestronFB } from '../use/useCrestronFB'
+  const { dPulse } = useCrestronAct(),
+    { digFB: confFB } = useCrestronFB('27'),
+    { digFB: persFB } = useCrestronFB('23'),
+    { digFB: roomFB } = useCrestronFB('24'),
+    { digFB: micsFB } = useCrestronFB('26')
+</script>
 
 <style lang="scss" scoped>
   @import '../assets/colors';
@@ -58,6 +78,9 @@
           border-bottom-right-radius: 0.5em;
         }
         &:active {
+          color: $light;
+        }
+        &.active {
           color: $light;
         }
       }

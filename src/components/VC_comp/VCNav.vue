@@ -1,56 +1,60 @@
 <template>
   <nav class="">
     <button
-      @click="navClicked(1)"
-      :class="{ active: activeNav === 1 }">
+      @click="dPulse('34')"
+      :class="{ active: dialFb }">
       <h5>Manual Dial</h5>
     </button>
-    <button
+    <!-- <button
       v-if="false"
       @click="navClicked(2)"
       :class="{ active: activeNav === 2 }">
       <h5>Adderess Book</h5>
-    </button>
+    </button> -->
     <button
-      @click="navClicked(3)"
-      :class="{ active: activeNav === 3 }">
+      @click="dPulse('36')"
+      :class="{ active: vcCamsFB }">
       <h5>Cameras</h5>
     </button>
     <button
-      @click="navClicked(4)"
-      :class="{ active: activeNav === 4 }">
+      @click="dPulse('37')"
+      :class="{ active: vcContentFB }">
       <h5>Content Send</h5>
     </button>
     <button
-      @click="navClicked(5)"
-      :class="{ active: activeNav === 5 }">
+      @click="dPulse('39')"
+      :class="{ active: vcPreFB }">
       <h5>Advanced Preview</h5>
     </button>
   </nav>
   <button
     id="mic"
-    :class="{ muted: micMuted }"
-    @click="micMuted = !micMuted">
+    :class="{ muted: vcMuteFB }"
+    @click="dPulse('96')">
     <font-awesome-icon
-      v-if="!micMuted"
+      v-if="!vcMuteFB"
       :icon="['fas', 'microphone']" />
     <font-awesome-icon
-      v-if="micMuted"
+      v-if="vcMuteFB"
       :icon="['fas', 'microphone-slash']" />
     <h5>Mic Mute</h5>
   </button>
 </template>
 
 <script setup>
+  // import from vue
   import { ref } from 'vue'
-  const activeNav = ref(5),
-    navClicked = n => {
-      activeNav.value = n
-    },
-    micMuted = ref(false)
-  defineExpose({
-    activeNav,
-  })
+
+  //import Crestron function
+  import { useCrestronAct } from '../../use/useCrestronAct'
+  import { useCrestronFB } from '../../use/useCrestronFB'
+
+  const { dPulse } = useCrestronAct(),
+    { digFB: dialFb } = useCrestronFB('34'),
+    { digFB: vcContentFB } = useCrestronFB('37'),
+    { digFB: vcCamsFB } = useCrestronFB('36'),
+    { digFB: vcPreFB } = useCrestronFB('39'),
+    { digFB: vcMuteFB } = useCrestronFB('96')
 </script>
 
 <style lang="scss" scoped>

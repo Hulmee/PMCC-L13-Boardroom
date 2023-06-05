@@ -3,38 +3,65 @@
     <div
       id="contBts"
       class="">
-      <button>
+      <button
+        @click="dPulse('111')"
+        :class="{ active: pmccFB }">
         <font-awesome-icon :icon="['fas', 'computer']" />
         <h3>PMCC PC</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('112')"
+        :class="{ active: uomFB }">
         <font-awesome-icon :icon="['fas', 'computer']" />
         <h3>UoM PC</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('114')"
+        :class="{ active: frontFB }">
         <font-awesome-icon :icon="['fas', 'laptop']" />
         <h3>Front Table Input</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('115')"
+        :class="{ active: rearFB }">
         <font-awesome-icon :icon="['fas', 'laptop']" />
         <h3>Rear Table Input</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('113')"
+        :class="{ active: clickFB }">
         <font-awesome-icon :icon="['fab', 'chromecast']" />
         <h3>Barco Clickshare</h3>
       </button>
-      <button class="active">
+      <button
+        @click="dPulse('116')"
+        :class="{ active: noneFB }">
         <h3>No Content</h3>
       </button>
     </div>
-    <button id="layout">
+    <button
+      id="layout"
+      @click="dPulse('105')"
+      :class="{ active: layFB }">
       <h3>VC Layout</h3>
     </button>
   </section>
 </template>
 
 <script setup>
-  //
+  // import Crestron Logic
+  import { useCrestronFB } from '../../use/useCrestronFB'
+  import { useCrestronAct } from '../../use/useCrestronAct'
+
+  // use Crestron logic
+  const { dPulse } = useCrestronAct(),
+    { digFB: pmccFB } = useCrestronFB('111'),
+    { digFB: uomFB } = useCrestronFB('112'),
+    { digFB: frontFB } = useCrestronFB('114'),
+    { digFB: rearFB } = useCrestronFB('115'),
+    { digFB: clickFB } = useCrestronFB('113'),
+    { digFB: noneFB } = useCrestronFB('116'),
+    { digFB: layFB } = useCrestronFB('105')
 </script>
 
 <style lang="scss" scoped>

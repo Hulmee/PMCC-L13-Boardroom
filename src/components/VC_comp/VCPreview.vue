@@ -1,46 +1,76 @@
 <template>
   <section id="preview">
     <div id="source">
-      <button id="PMCC">
+      <button
+        id="PMCC"
+        @click="dPulse('330')"
+        :class="{ active: pmccFB }">
         <font-awesome-icon :icon="['fas', 'computer']" />
         <h3>PMCC PC</h3>
       </button>
-      <button id="UoM">
+      <button
+        id="UoM"
+        @click="dPulse('331')"
+        :class="{ active: uomFB }">
         <font-awesome-icon :icon="['fas', 'computer']" />
         <h3>UoM PC</h3>
       </button>
-      <button id="table1">
+      <button
+        id="table1"
+        @click="dPulse('332')"
+        :class="{ active: frontFB }">
         <font-awesome-icon :icon="['fas', 'laptop']" />
         <h3>Front Table Input</h3>
       </button>
-      <button id="table2">
+      <button
+        id="table2"
+        @click="dPulse('333')"
+        :class="{ active: rearFB }">
         <font-awesome-icon :icon="['fas', 'laptop']" />
         <h3>Rear Table Input</h3>
       </button>
-      <button id="clichshare">
+      <button
+        id="clichshare"
+        @click="dPulse('334')"
+        :class="{ active: clickFB }">
         <font-awesome-icon :icon="['fab', 'chromecast']" />
         <h3>Barco Clickshare</h3>
       </button>
-      <button id="confPri">
+      <button
+        id="confPri"
+        @click="dPulse('335')"
+        :class="{ active: vcPriFB }">
         <font-awesome-icon :icon="['fas', 'users']" />
         <h3>Confrence Primary</h3>
       </button>
-      <button id="confSec">
+      <button
+        id="confSec"
+        @click="dPulse('336')"
+        :class="{ active: vcSecFB }">
         <font-awesome-icon :icon="['fas', 'users']" />
         <h3>Confrence Secondary</h3>
       </button>
-      <button id="noCon">
+      <button
+        id="noCon"
+        @click="dPulse('337')"
+        :class="{ active: blankFB }">
         <h3>No Content</h3>
       </button>
     </div>
     <div id="outputs">
-      <button>
+      <button
+        @click="dPulse('340')"
+        :class="{ active: leftFB }">
         <h3>Left LCD</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('341')"
+        :class="{ active: rightFB }">
         <h3>Right LCD</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('342')"
+        :class="{ active: tableFB }">
         <h3>Table Monitors</h3>
       </button>
     </div>
@@ -48,7 +78,23 @@
 </template>
 
 <script setup>
-  //
+  // import Crestron Logic
+  import { useCrestronFB } from '../../use/useCrestronFB'
+  import { useCrestronAct } from '../../use/useCrestronAct'
+
+  // use Crestron logic
+  const { dPulse } = useCrestronAct(),
+    { digFB: pmccFB } = useCrestronFB('330'),
+    { digFB: uomFB } = useCrestronFB('331'),
+    { digFB: frontFB } = useCrestronFB('332'),
+    { digFB: rearFB } = useCrestronFB('333'),
+    { digFB: clickFB } = useCrestronFB('334'),
+    { digFB: vcPriFB } = useCrestronFB('335'),
+    { digFB: vcSecFB } = useCrestronFB('336'),
+    { digFB: blankFB } = useCrestronFB('337'),
+    { digFB: leftFB } = useCrestronFB('340'),
+    { digFB: rightFB } = useCrestronFB('341'),
+    { digFB: tableFB } = useCrestronFB('342')
 </script>
 
 <style lang="scss" scoped>
@@ -57,7 +103,7 @@
     height: 100%;
     width: 100%;
     display: grid;
-    grid-template-rows:  0.5fr repeat(5, 1fr);
+    grid-template-rows: 0.5fr repeat(5, 1fr);
 
     grid-template-columns: repeat(4, 1fr);
     @media screen and (max-width: 641px) {

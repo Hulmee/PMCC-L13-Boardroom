@@ -1,17 +1,18 @@
 <template>
   <section id="wrapper">
     <div id="mode">
-      <VCMain v-if="false" />
+      <VCMain v-if="VCMainFB" />
       <PresAV
         class="marg-LR"
-        v-if="false" />
-      <Room v-if="false" />
-      <Microphone />
+        v-if="presFB" />
+      <Room v-if="roomFB" />
+      <Microphone v-if="micFB" />
     </div>
 
     <aside id="rhs">
       <button
-        @click="volUp"
+        @touchstart="dHoldStart($event, '51')"
+        @touchend="dHoldEnd($event, '51')"
         class="">
         <font-awesome-icon icon="fa-solid fa-volume-high" />
       </button>
@@ -21,11 +22,13 @@
           :class="{ muted: isMuted }"></div>
       </div>
 
-      <button @click="volDwn">
+      <button
+        @touchstart="dHoldStart($event, '52')"
+        @touchend="dHoldEnd($event, '52')">
         <font-awesome-icon icon="fa-solid fa-volume-low" />
       </button>
       <button
-        @click="isMuted = !isMuted"
+        @click="dPulse('53')"
         :class="{ mute: isMuted }">
         <font-awesome-icon icon="fa-solid fa-volume-xmark" />
       </button>
@@ -34,29 +37,39 @@
 </template>
 
 <script setup>
+  // vue imports
   import { computed, ref } from 'vue'
 
+  // import componets/pages
   import VCMain from './VCMain.vue'
   import PresAV from './Present/PresAV.vue'
   import Room from './Room.vue'
   import Microphone from './Microphone.vue'
 
-  const props = defineProps({
-      mode: Number,
-    }),
-    volFb = ref(50),
+  // import Crestron functions
+  import { useCrestronFB } from '../use/useCrestronFB'
+  import { useCrestronAct } from '../use/useCrestronAct'
+
+  // use Crestron functions
+  const { dPulse, dHoldStart, dHoldEnd } = useCrestronAct(),
+    { digFB: vcDailFB } = useCrestronFB('34'),
+    { digFB: vcContentFB } = useCrestronFB('37'),
+    { digFB: vcCamsFB } = useCrestronFB('36'),
+    { digFB: vcPreFB } = useCrestronFB('39'),
+    { anFB: volFb } = useCrestronFB('2'),
+    { digFB: presFB } = useCrestronFB('23'),
+    { digFB: roomFB } = useCrestronFB('24'),
+    { digFB: isMuted } = useCrestronFB('53'),
+    { digFB: micFB } = useCrestronFB('26')
+
+  // computed refs
+  const VCMainFB = computed(
+      () =>
+        vcDailFB.value || vcContentFB.value || vcCamsFB.value || vcPreFB.value
+    ),
     volCSS = computed(() => {
-      return `${volFb.value}%`
-    }),
-    isMuted = ref(true),
-    volUp = () => {
-      volFb.value++
-      isMuted.value = false
-    },
-    volDwn = () => {
-      volFb.value--
-      isMuted.value = false
-    }
+      return `${(volFb.value / 65535) * 100}%`
+    })
 </script>
 
 <style lang="scss" scoped>

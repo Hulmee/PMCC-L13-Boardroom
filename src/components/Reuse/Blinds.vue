@@ -1,25 +1,31 @@
 <template>
   <h3>Blinds</h3>
   <div class="btns">
-    <button>
+    <button @click="dPulse('61')">
       <font-awesome-icon icon="fa-solid fa-caret-up" />
       <h5>Raise Blinds</h5>
     </button>
-    <button>
+    <button @click="dPulse('62')">
       <font-awesome-icon icon="fa-regular fa-square" />
       <h5>Stop Blinds</h5>
     </button>
-    <button>
+    <button @click="dPulse('63')">
       <font-awesome-icon icon="fa-solid fa-caret-down" />
       <h5>Lower Blinds</h5>
     </button>
   </div>
 </template>
 
-<script></script>
+<script>
+  // import Crestron Logic
+  import { useCrestronAct } from '../../use/useCrestronAct'
+
+  // use Crestron logic
+  const { dPulse } = useCrestronAct()
+</script>
 
 <style lang="scss" scoped>
-  @import '../assets/colors';
+  @import '../../assets/colors';
   .btns {
     height: 100%;
     text-align: center;

@@ -6,8 +6,6 @@
     <main @click="$emit('pwrOn')">
       <h1>Welcome to the Boardroom</h1>
       <h3>{{ subHeading }}</h3>
-      <small>Device ip: {{ ipAdd }}</small>
-      <small>Device MAC: {{ macAdd }}</small>
 
       <CoffeLoad
         id="coffee"
@@ -16,13 +14,13 @@
       <div
         class="btns"
         v-if="!loading">
-        <button>
+        <button @click="dPulse('31')">
           <font-awesome-icon
             icon="fa-solid fa-display"
             size="xl" />
           <h4 class="container">In room Presentation</h4>
         </button>
-        <button>
+        <button @click="dPulse('32')">
           <font-awesome-icon
             icon="fa-solid fa-users"
             size="xl" />
@@ -32,6 +30,11 @@
           </h4>
         </button>
       </div>
+      <div>
+        <small>Device ip: {{ ipAdd }}</small>
+        |
+        <small>Device MAC: {{ macAdd }}</small>
+      </div>
     </main>
     <aside id="rhs">
       <Lights />
@@ -40,18 +43,24 @@
 </template>
 
 <script setup>
+  // import from vue
   import { ref } from 'vue'
 
-  import Lights from './Lights.vue'
-  import Blinds from './Blinds.vue'
+  // import components/pages
+  import Lights from './Reuse/Lights.vue'
+  import Blinds from './Reuse/Blinds.vue'
   import CoffeLoad from './Reuse/CoffeLoad.vue'
 
+  // import Crestron Logic
   import { useCrestronFB } from '../use/useCrestronFB'
+  import { useCrestronAct } from '../use/useCrestronAct'
 
+  // use Crestron logic
   const { stringFB: macAdd } = useCrestronFB('Csig.MAC_Address_fb'),
     { stringFB: ipAdd } = useCrestronFB('Csig.Ip_Address_fb'),
     { stringFB: subHeading } = useCrestronFB('1'),
-    { digFB: loading } = useCrestronFB('13')
+    { digFB: loading } = useCrestronFB('13'),
+    { dPulse } = useCrestronAct()
 </script>
 
 <style lang="scss" scoped>

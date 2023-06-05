@@ -8,61 +8,73 @@
       disabled
       v-model="sNum" />
     <button
+      @click="dPulse('121')"
       class="npKey"
       id="np1">
       1
     </button>
     <button
+      @click="dPulse('122')"
       class="npKey"
       id="np2">
       2
     </button>
     <button
+      @click="dPulse('123')"
       class="npKey"
       id="np3">
       3
     </button>
     <button
+      @click="dPulse('124')"
       class="npKey"
       id="np4">
       4
     </button>
     <button
+      @click="dPulse('125')"
       class="npKey"
       id="np5">
       5
     </button>
     <button
+      @click="dPulse('126')"
       class="npKey"
       id="np6">
       6
     </button>
     <button
+      @click="dPulse('127')"
       class="npKey"
       id="np7">
       7
     </button>
     <button
+      @click="dPulse('128')"
       class="npKey"
       id="np8">
       8
     </button>
     <button
+      @click="dPulse('129')"
       class="npKey"
       id="np9">
       9
     </button>
     <button
+      @click="dPulse('131')"
       class="npKey"
       id="np10">
       *
     </button>
     <button
+      @click="dPulse('130')"
       class="npKey"
       id="np11">
       0
     </button>
     <button
+      @click="dPulse('132')"
       class="npKey"
       id="np12">
       #
@@ -71,9 +83,18 @@
 </template>
 
 <script setup>
+  // imports from vue
   import { computed, ref } from 'vue'
 
-  const numDial = ref('97125270288@zoomcrc.com')
+  // import Crestron Logic
+  import { useCrestronFB } from '../../use/useCrestronFB'
+  import { useCrestronAct } from '../../use/useCrestronAct'
+
+  // use Crestron logic
+  const { stringFB: numDial } = useCrestronFB('10'),
+    { dPulse } = useCrestronAct()
+
+  // formate dail string for display
   const sNum = computed(() => {
     return numDial.value.replace(/^(.{3})(.{3})(.{3}(.*))$/, '$1 $2 $3 ')
   })

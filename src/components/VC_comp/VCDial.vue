@@ -5,15 +5,21 @@
     <div
       id="webCof"
       class="">
-      <button>
+      <button
+        @click="dPulse('75')"
+        :disabled="!webCofEn">
         Dial PMCC Teams
         <small>@meet.petermac.org.au</small>
       </button>
-      <button>
+      <button
+        @click="dPulse('76')"
+        :disabled="!webCofEn">
         Dial PMCC Zoom
         <small>@zoomcrc.com</small>
       </button>
-      <button>
+      <button
+        @click="dPulse('77')"
+        :disabled="!webCofEn">
         Dial UoM Zoom
         <small>@zmau.us</small>
       </button>
@@ -24,26 +30,23 @@
       <Numpad />
     </div>
     <div id="rhBtns">
-      <button>
+      <button @click="dPulse('106')">
         <font-awesome-icon :icon="['fas', 'delete-left']" />
       </button>
-      <button>
-        <!-- <font-awesome-icon :icon="['fas', 'trash']" /> -->
-        CLEAR
-      </button>
-
-      <button>
+      <button @click="dPulse('107')">CLEAR</button>
+      <button @click="dPulse('141')">
         <font-awesome-icon icon="fa-solid fa-keyboard" />
       </button>
-      <!-- <button>DTMF</button> -->
     </div>
     <button
+      @click="dPulse('103')"
       class="container"
       id="call">
       <font-awesome-icon :icon="['fas', 'phone']" />
       <h3>call</h3>
     </button>
     <button
+      @click="dPulse('104')"
       class="container"
       id="end">
       <font-awesome-icon :icon="['fas', 'phone-slash']" />
@@ -53,7 +56,15 @@
 </template>
 
 <script setup>
+  // import subPages
   import Numpad from '../Reuse/Numpad.vue'
+  // import Crestron Logic
+  import { useCrestronFB } from '../../use/useCrestronFB'
+  import { useCrestronAct } from '../../use/useCrestronAct'
+
+  // use Crestron logic
+  const { dPulse } = useCrestronAct(),
+    { digFB: webCofEn } = useCrestronFB('74')
 </script>
 
 <style lang="scss" scoped>

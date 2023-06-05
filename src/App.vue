@@ -14,7 +14,7 @@
           class=""
           src="./assets/Logo/UoM_black.png" />
       </div>
-      <OnHeader />
+      <OnHeader v-if="onFB" />
     </header>
 
     <Off v-if="offFB" />
@@ -22,6 +22,7 @@
   </div>
   <div class="popups">
     <Timeout v-if="timeoutFB" />
+    <Shutdown v-if="shutdownFB" />
   </div>
 </template>
 
@@ -34,6 +35,7 @@
   import On from './components/On.vue'
   import OnHeader from './components/OnHeader.vue'
   import Timeout from './components/Modal/Timeout.vue'
+  import Shutdown from './components/Modal/Shutdown.vue'
 
   // import Crestron functions
   import { useCrestronFB } from './use/useCrestronFB'
@@ -42,9 +44,8 @@
   // register Crestron feedback
   const { digFB: offFB } = useCrestronFB('15'),
     { digFB: onFB } = useCrestronFB('16'),
-    { digFB: timeoutFB } = useCrestronFB('18')
-
-  const page = ref(1)
+    { digFB: timeoutFB } = useCrestronFB('18'),
+    { digFB: shutdownFB } = useCrestronFB('17')
 
   const darkMode = ref(true)
 </script>

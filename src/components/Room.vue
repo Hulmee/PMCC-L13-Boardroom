@@ -10,8 +10,8 @@
 </template>
 
 <script setup>
-  import Lights from './Lights.vue'
-  import Blinds from './Blinds.vue'
+  import Lights from './Reuse/Lights.vue'
+  import Blinds from './Reuse/Blinds.vue'
 </script>
 
 <style lang="scss" scoped>

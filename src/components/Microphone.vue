@@ -7,7 +7,8 @@
       class="mic">
       <h3>Handheld Mic</h3>
       <button
-        @click="hhUp"
+        @mousedown="dHoldStart('54')"
+        @mouseup="dHoldEnd('54')"
         class="">
         <font-awesome-icon icon="fa-solid fa-volume-high" />
       </button>
@@ -18,11 +19,13 @@
           :class="{ muted: hhMute }"></div>
       </div>
 
-      <button @click="hhDwn">
+      <button
+        @mousedown="dHoldStart('55')"
+        @mouseup="dHoldEnd('55')">
         <font-awesome-icon icon="fa-solid fa-volume-low" />
       </button>
       <button
-        @click="hhMute = !hhMute"
+        @click="dPulse('56')"
         :class="{ muted: hhMute }">
         <font-awesome-icon icon="fa-solid fa-volume-xmark" />
       </button>
@@ -32,7 +35,8 @@
       class="mic">
       <h3>Lapel Mic</h3>
       <button
-        @click="lpUp"
+        @mousedown="dHoldStart('57')"
+        @mouseup="dHoldEnd('57')"
         class="">
         <font-awesome-icon icon="fa-solid fa-volume-high" />
       </button>
@@ -43,11 +47,13 @@
           :class="{ muted: lpMute }"></div>
       </div>
 
-      <button @click="lpDwn">
+      <button
+        @mousedown="dHoldStart('58')"
+        @mouseup="dHoldEnd('58')">
         <font-awesome-icon icon="fa-solid fa-volume-low" />
       </button>
       <button
-        @click="lpMute = !lpMute"
+        @click="dPulse('59')"
         :class="{ muted: lpMute }">
         <font-awesome-icon icon="fa-solid fa-volume-xmark" />
       </button>
@@ -56,37 +62,30 @@
 </template>
 
 <script setup>
+  // imports from vue
   import { computed, ref } from 'vue'
 
-  const handheldVol = ref(20),
-    hhMute = ref(true),
-    hhUp = () => {
-      handheldVol.value++
-      hhMute.value = false
-    },
-    hhDwn = () => {
-      handheldVol.value--
-      hhMute.value = false
-    },
+  // imports Crestron Logic
+  import { useCrestronFB } from '../use/useCrestronFB'
+  import { useCrestronAct } from '../use/useCrestronAct'
+
+  // use Cretron Actions
+  const { dPulse, dHoldStart, dHoldEnd } = useCrestronAct()
+
+  // register handheld Feed back
+  const { anFB: handheldVol } = useCrestronFB('3'),
+    { digFB: hhMute } = useCrestronFB('56'),
     handVolCSS = computed(() => {
-      return `${handheldVol.value}%`
+      return `${(handheldVol.value / 65535) * 100}%`
     })
 
-  const lapelVol = ref(75),
-    lpMute = ref(false),
-    lpUp = () => {
-      lapelVol.value++
-      lpMute.value = false
-    },
-    lpDwn = () => {
-      lapelVol.value--
-      lpMute.value = false
-    },
+  // register lapel Feed back
+  const { anFB: lapelVol } = useCrestronFB('4'),
+    { digFB: lpMute } = useCrestronFB('59'),
     lapelVolCSS = computed(() => {
-      return `${lapelVol.value}%`
+      return `${(lapelVol.value / 65535) * 100}%`
     })
 </script>
-
 
 <style lang="scss" scoped>
   @import '../assets/colors';

@@ -2,40 +2,57 @@
   <section id="pre-route">
     <div id="pre-source1">
       <button
-        id="PMCC"
-        class="">
+        @click="dPulse('41')"
+        :class="{ active: pmccFB }"
+        id="PMCC">
         <font-awesome-icon :icon="['fas', 'computer']" />
         <h3>PMCC PC</h3>
       </button>
-      <button id="UoM">
+      <button
+        @click="dPulse('42')"
+        :class="{ active: uomFB }"
+        id="UoM">
         <font-awesome-icon :icon="['fas', 'computer']" />
         <h3>UoM PC</h3>
       </button>
       <button
-        id="clichshare"
-        class="active">
+        @click="dPulse('43')"
+        :class="{ active: clickFB }"
+        id="clichshare">
         <font-awesome-icon :icon="['fab', 'chromecast']" />
         <h3>Barco Clickshare</h3>
       </button>
     </div>
     <div id="pre-source2">
-      <button id="table1">
+      <button
+        @click="dPulse('44')"
+        :class="{ active: frontFB }"
+        id="table1">
         <font-awesome-icon :icon="['fas', 'laptop']" />
         <h3>Front Table Input</h3>
       </button>
-      <button id="table2">
+      <button
+        @click="dPulse('45')"
+        :class="{ active: rearFB }"
+        id="table2">
         <font-awesome-icon :icon="['fas', 'laptop']" />
         <h3>Rear Table Input</h3>
       </button>
     </div>
     <div id="pre-output">
-      <button>
+      <button
+        @click="dPulse('71')"
+        :class="{ active: leftFB }">
         <h3>Left LCD</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('72')"
+        :class="{ active: rightFB }">
         <h3>Right LCD</h3>
       </button>
-      <button>
+      <button
+        @click="dPulse('73')"
+        :class="{ active: tableFB }">
         <h3>Table Monitors</h3>
       </button>
     </div>
@@ -43,7 +60,20 @@
 </template>
 
 <script setup>
-  //
+  // import Crestron Logic
+  import { useCrestronFB } from '../../use/useCrestronFB'
+  import { useCrestronAct } from '../../use/useCrestronAct'
+
+  // use Crestron logic
+  const { dPulse } = useCrestronAct(),
+    { digFB: pmccFB } = useCrestronFB('41'),
+    { digFB: uomFB } = useCrestronFB('42'),
+    { digFB: clickFB } = useCrestronFB('43'),
+    { digFB: frontFB } = useCrestronFB('44'),
+    { digFB: rearFB } = useCrestronFB('45'),
+    { digFB: leftFB } = useCrestronFB('71'),
+    { digFB: rightFB } = useCrestronFB('72'),
+    { digFB: tableFB } = useCrestronFB('73')
 </script>
 
 <style lang="scss" scoped>

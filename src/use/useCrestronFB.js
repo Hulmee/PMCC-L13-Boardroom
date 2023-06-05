@@ -14,7 +14,7 @@ export function useCrestronFB(Join) {
   })
 
   CrComLib.subscribeState('s', Join, v => {
-    stringFB.value = v ? v : 'none'
+    stringFB.value = v ? v : ''
   })
   return { digFB, anFB, stringFB }
 }
