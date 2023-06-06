@@ -30,7 +30,7 @@
           </h4>
         </button>
       </div>
-      <div>
+      <div v-if="!isWebXpanel">
         <small>Device ip: {{ ipAdd }}</small>
         |
         <small>Device MAC: {{ macAdd }}</small>
@@ -60,7 +60,11 @@
     { stringFB: ipAdd } = useCrestronFB('Csig.Ip_Address_fb'),
     { stringFB: subHeading } = useCrestronFB('1'),
     { digFB: loading } = useCrestronFB('13'),
-    { dPulse } = useCrestronAct()
+    { dPulse } = useCrestronAct(),
+    isWebXpanel = ref(WebXpanel.isActive)
+  // if (WebXpanel.isActive) isWebXpanel.value = true
+  // if (!WebXpanel.isActive) isWebXpanel.value = false
+  console.log(isWebXpanel.value)
 </script>
 
 <style lang="scss" scoped>

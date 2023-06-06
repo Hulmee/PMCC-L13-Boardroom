@@ -70,7 +70,7 @@ button {
     color: var(--TX-Color);
     filter: drop-shadow(10px 10px 10px var(--TX-Color));
     border-radius: 1em;
-    border: solid 1px $light;
+    border: solid 1px var(--TX-Color);
     text-align: center;
     transition: background-color 500ms ease-in-out, color 500ms;
   }

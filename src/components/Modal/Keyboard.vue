@@ -51,7 +51,7 @@
         <button @click="dPulse('184')">l</button>
         <button @click="dPulse('185')">;</button>
         <button @click="dPulse('198')">@</button>
-        <button @click="dPulse('199')">#</button>
+        <button @click="dPulse('132')">#</button>
       </div>
       <div class="line line5">
         <button @click="dPulse('147')">Shift</button>

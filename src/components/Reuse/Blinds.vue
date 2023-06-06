@@ -18,6 +18,7 @@
 
 <script>
   // import Crestron Logic
+  // import { useCrestronAct } from '../../use/useCrestronAct'
   import { useCrestronAct } from '../../use/useCrestronAct'
 
   // use Crestron logic

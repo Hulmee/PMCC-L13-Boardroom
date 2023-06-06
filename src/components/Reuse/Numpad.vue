@@ -8,6 +8,8 @@
       disabled
       v-model="sNum" />
     <button
+      v-focus
+      @keypress="test($event)"
       @click="dPulse('121')"
       class="npKey"
       id="np1">
@@ -92,12 +94,19 @@
 
   // use Crestron logic
   const { stringFB: numDial } = useCrestronFB('10'),
-    { dPulse } = useCrestronAct()
+    { dPulse } = useCrestronAct(),
+    test = e => {
+      console.log(e.keyCode)
+      console.log(e.key)
+    }
 
   // formate dail string for display
   const sNum = computed(() => {
     return numDial.value.replace(/^(.{3})(.{3})(.{3}(.*))$/, '$1 $2 $3 ')
   })
+  const vFocus = {
+    mounted: el => el.focus(),
+  }
 </script>
 
 <style lang="scss" scoped>

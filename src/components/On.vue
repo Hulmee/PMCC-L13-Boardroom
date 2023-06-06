@@ -13,6 +13,8 @@
       <button
         @touchstart="dHoldStart($event, '51')"
         @touchend="dHoldEnd($event, '51')"
+        @mousedown="dHoldStart($event, '51')"
+        @mouseup="dHoldEnd($event, '51')"
         class="">
         <font-awesome-icon icon="fa-solid fa-volume-high" />
       </button>
@@ -24,7 +26,9 @@
 
       <button
         @touchstart="dHoldStart($event, '52')"
-        @touchend="dHoldEnd($event, '52')">
+        @touchend="dHoldEnd($event, '52')"
+        @mousedown="dHoldStart($event, '52')"
+        @mouseup="dHoldEnd($event, '52')">
         <font-awesome-icon icon="fa-solid fa-volume-low" />
       </button>
       <button

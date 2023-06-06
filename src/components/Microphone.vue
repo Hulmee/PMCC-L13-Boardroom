@@ -7,8 +7,10 @@
       class="mic">
       <h3>Handheld Mic</h3>
       <button
-        @mousedown="dHoldStart('54')"
-        @mouseup="dHoldEnd('54')"
+        @mousedown="dHoldStart($event, '54')"
+        @mouseup="dHoldEnd($event, '54')"
+        @touchstart="dHoldStart($event, '54')"
+        @touchend="dHoldEnd($event, '54')"
         class="">
         <font-awesome-icon icon="fa-solid fa-volume-high" />
       </button>
@@ -20,8 +22,10 @@
       </div>
 
       <button
-        @mousedown="dHoldStart('55')"
-        @mouseup="dHoldEnd('55')">
+        @mousedown="dHoldStart($event, '55')"
+        @mouseup="dHoldEnd($event, '55')"
+        @touchstart="dHoldStart($event, '55')"
+        @touchend="dHoldEnd($event, '55')">
         <font-awesome-icon icon="fa-solid fa-volume-low" />
       </button>
       <button
@@ -35,8 +39,10 @@
       class="mic">
       <h3>Lapel Mic</h3>
       <button
-        @mousedown="dHoldStart('57')"
-        @mouseup="dHoldEnd('57')"
+        @touchstart="dHoldStart($event, '57')"
+        @touchend="dHoldEnd($event, '57')"
+        @mousedown="dHoldStart($event, '57')"
+        @mouseup="dHoldEnd($event, '57')"
         class="">
         <font-awesome-icon icon="fa-solid fa-volume-high" />
       </button>
@@ -48,8 +54,10 @@
       </div>
 
       <button
-        @mousedown="dHoldStart('58')"
-        @mouseup="dHoldEnd('58')">
+        @mousedown="dHoldStart($event, '58')"
+        @mouseup="dHoldEnd($event, '58')"
+        @touchstart="dHoldStart($event, '58')"
+        @touchend="dHoldEnd($event, '58')">
         <font-awesome-icon icon="fa-solid fa-volume-low" />
       </button>
       <button

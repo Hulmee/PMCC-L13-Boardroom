@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [
     vue(),
     VitePWA({
-      name: 'PMCC Boardroom',
+      name: 'PMCC_Boardroom',
       theme_color: '#411e75',
       registerType: 'autoUpdate',
       devOptions: {
