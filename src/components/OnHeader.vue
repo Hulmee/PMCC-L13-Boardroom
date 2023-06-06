@@ -4,14 +4,14 @@
     class="">
     <nav class="">
       <button
-        @click="dPulse('27')"
-        v-if="persFB">
+        :class="{ active: confFB }"
+        @click="dPulse('27')">
         <font-awesome-icon :icon="['fas', 'users']" />
         <h3>Conference</h3>
       </button>
       <button
-        @click="dPulse('23')"
-        v-else>
+        :class="{ active: persFB }"
+        @click="dPulse('23')">
         <font-awesome-icon :icon="['fas', 'person-chalkboard']" />
         <h3>Presentation</h3>
       </button>
