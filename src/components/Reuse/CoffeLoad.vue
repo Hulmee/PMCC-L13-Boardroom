@@ -9,6 +9,7 @@
 </template>
 
 <style lang="scss" scoped>
+  @import '../../assets/colors';
   /**
     * Coffee
     *
@@ -56,7 +57,16 @@
     div {
       height: ($size / 2);
       width: ($size / 5);
-      background: $color;
+      // background: $color;
+      &:first-child {
+        background: $PMCC1;
+      }
+      &:nth-child(2) {
+        background: $PMCC2;
+      }
+      &:last-child {
+        background: $PMCC3;
+      }
       opacity: 0.3;
       animation: coffee 2s infinite;
     }
