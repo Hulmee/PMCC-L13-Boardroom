@@ -7,10 +7,7 @@
       <h1>Welcome to the Boardroom</h1>
       <h3>{{ subHeading }}</h3>
 
-      <!-- <CoffeLoad
-        id="coffee"
-        v-if="loading" /> -->
-      <SVGLoader
+      <CoffeLoad
         id="coffee"
         v-if="loading" />
 
@@ -53,7 +50,6 @@
   import Lights from './Reuse/Lights.vue'
   import Blinds from './Reuse/Blinds.vue'
   import CoffeLoad from './Reuse/CoffeLoad.vue'
-  import SVGLoader from './Reuse/SVGLoader.vue'
 
   // import Crestron Logic
   import { useCrestronFB } from '../use/useCrestronFB'

@@ -39,6 +39,7 @@
     width: $size;
     padding: 2px;
     justify-items: center;
+    transform-style: preserve-3d;
 
     &:before {
       box-sizing: border-box;
@@ -60,6 +61,19 @@
       background: $color;
       opacity: 0.3;
       animation: coffee 2s infinite;
+      border-radius: 75%;
+      transform: translateZ(-10px);
+      &:first-child {
+        border-radius: 25% 75%;
+        background: $PMCC1;
+      }
+      &:nth-child(2) {
+        background: $PMCC2;
+      }
+      &:last-child {
+        border-radius: 75% 25%;
+        background: $PMCC3;
+      }
     }
 
     @for $fume from 1 through $no-of-fume {
