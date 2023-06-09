@@ -121,7 +121,7 @@
       align-items: center;
       .logos {
         height: 75%;
-        min-width: 10%;
+        min-width: 15%;
         padding-left: 1em;
         img {
           height: 100%;
