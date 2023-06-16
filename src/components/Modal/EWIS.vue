@@ -19,11 +19,19 @@
   .modal {
     background: $fail;
     z-index: 10;
+    .modal-card {
+      filter: drop-shadow(10px 10px 10px var(--TX-Color));
+      @media screen and (max-width: 641px) {
+        filter: drop-shadow(5px 5px 5px var(--TX-Color));
+      }
+    }
   }
-  h1 {
-    font-size: 4em;
-  }
-  h2 {
-    font-size: 2em;
+  @media screen and (min-width: 641px) {
+    h1 {
+      font-size: 4em;
+    }
+    h2 {
+      font-size: 2em;
+    }
   }
 </style>
