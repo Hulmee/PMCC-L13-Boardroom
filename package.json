@@ -11,19 +11,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@crestron/ch5-crcomlib": "^2.3.1",
-    "@crestron/ch5-webxpanel": "^2.0.0",
-    "@fortawesome/fontawesome-svg-core": "^6.4.0",
-    "@fortawesome/free-brands-svg-icons": "^6.4.0",
-    "@fortawesome/free-regular-svg-icons": "^6.4.0",
-    "@fortawesome/free-solid-svg-icons": "^6.4.0",
-    "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@crestron/ch5-crcomlib": "^2.10.0",
+    "@crestron/ch5-webxpanel": "^2.8.0",
+    "@fortawesome/fontawesome-svg-core": "^6.5.2",
+    "@fortawesome/free-brands-svg-icons": "^6.5.2",
+    "@fortawesome/free-regular-svg-icons": "^6.5.2",
+    "@fortawesome/free-solid-svg-icons": "^6.5.2",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^4.1.0",
-    "sass": "^1.62.1",
-    "vite": "^4.3.9",
+    "@vitejs/plugin-vue": "^4.6.2",
+    "sass": "^1.77.6",
+    "vite": "^4.5.3",
     "vite-plugin-pwa": "^0.15.2"
   }
 }
